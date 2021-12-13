@@ -19,11 +19,11 @@ class FiddupResult(object):
 
 
 @click.command()
-@click.option("--inpath", type=str)
-@click.option("--analyze", type=bool, default=True)
-@click.option("--threshold", type=float, default=0.7)
-@click.option("--extensions", "-e", multiple=True, default=["mp3", "mp4", "wma"])
-@click.option("--verbose", type=bool, default=False)
+@click.option("--inpath", "-i", type=str, required=True)
+@click.option("--analyze", "-a", type=bool, default=True)
+@click.option("--threshold", "-t", type=float, default=0.7)
+@click.option("--extensions", "-e", multiple=True, default=["mp3", "mp4", "wma"], required=True)
+@click.option("--verbose", "-v", is_flag=True)
 def fiddup(
     verbose,
     extensions,
@@ -45,11 +45,6 @@ def fiddup(
             f"[{Fore.CYAN}Info{Style.RESET_ALL}] Scanning for extensions: {', '.join(extensions)}"
         )
 
-    if inpath is None:
-        click.secho(
-            f"[{Fore.RED}Error{Style.RESET_ALL}] You need to specify an inpath with --inpath"
-        )
-        exit()
 
     for ext in extensions:
         for file in glob.glob(f"{inpath}\\*.{ext}"):
