@@ -4,6 +4,15 @@ from colorama import Fore, Back, Style
 from difflib import SequenceMatcher
 from pathlib import Path
 from alive_progress import alive_bar
+from terminaltables import SingleTable
+
+
+def prepare_table_list():
+    table_data = [
+        [f'{Style.BRIGHT}Name{Style.RESET_ALL}', f'{Style.BRIGHT}Compared to{Style.RESET_ALL}', f'{Style.BRIGHT}Similarity{Style.RESET_ALL}'],
+    ]
+
+    return table_data
 
 
 class FiddupResult(object):
@@ -21,6 +30,9 @@ class FiddupResult(object):
 
     def __eq__(self, other):
         return self.base_file == other.compared_file and self.compared_file == other.base_file
+
+    def as_terminaltable_row(self):
+        return [self.base_file, self.compared_file, self.similarity]
 
 
 @click.command()
@@ -42,6 +54,7 @@ def fiddup(
     _result_list = []
     _file_count = 0
     _dir_count = 0
+    table_data = prepare_table_list()
 
     if verbose:
         click.secho(
@@ -86,13 +99,14 @@ def fiddup(
                     )
                     if _fu.similarity >= threshold:
                         if _fu not in _result_list:
+                            table_data.append(_fu.as_terminaltable_row())
                             _result_list.append(_fu)
             bar()
 
-    click.secho(f"[{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}]")
-    click.secho(f"{Style.BRIGHT}{'Original': <40}{'Compared to': <40}{'Match': <15}")
-    for result in _result_list:
-        click.echo(result)
+    table = SingleTable(table_data, f"{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}")
+    table.inner_heading_row_border = False
+    table.justify_columns = {0: 'left', 1: 'left', 2: 'right'}
+    print(table.table)
 
 
 if __name__ == "__main__":

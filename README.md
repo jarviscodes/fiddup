@@ -21,58 +21,46 @@ Only outputs above a specified similarity are stored.
 
 ## Usage
 ```
-Usage: main.py [OPTIONS]
+Usage: python -m fiddup [OPTIONS]
 
 Options:
   -i, --inpath TEXT      [required]
   -a, --analyze BOOLEAN
   -t, --threshold FLOAT
   -e, --extensions TEXT  [required]
+  -d, --directory
   -v, --verbose
   --help                 Show this message and exit.
+
 ```
 
 ## Example output
 
 ```
-(env) E:\Users\Jarvis\PycharmProjects\fiddup>python -m fiddup -i C:\Temp -e txt -d True
-[Results]
-Original                                Compared to                             Match          
-New folder                              New folder - Copy                       74.07
-New folder - Copy                       New folder - Copy (2)                   89.47
-New folder - Copy                       New folder - Copy (3)                   89.47
-New folder - Copy                       New folder - Copy (4)                   89.47
-New folder - Copy                       New folder - Copy (5)                   89.47
-New folder - Copy                       New folder - Copy (6)                   89.47
-New folder - Copy (2)                   New folder - Copy (3)                   95.24
-New folder - Copy (2)                   New folder - Copy (4)                   95.24
-New folder - Copy (2)                   New folder - Copy (5)                   95.24
-New folder - Copy (2)                   New folder - Copy (6)                   95.24
-New folder - Copy (3)                   New folder - Copy (4)                   95.24
-New folder - Copy (3)                   New folder - Copy (5)                   95.24
-New folder - Copy (3)                   New folder - Copy (6)                   95.24
-New folder - Copy (4)                   New folder - Copy (5)                   95.24
-New folder - Copy (4)                   New folder - Copy (6)                   95.24
-New folder - Copy (5)                   New folder - Copy (6)                   95.24
-New Text Document - Copy (2).txt        New Text Document - Copy (3).txt        96.88
-New Text Document - Copy (2).txt        New Text Document - Copy (4).txt        96.88
-New Text Document - Copy (2).txt        New Text Document - Copy (5).txt        96.88
-New Text Document - Copy (2).txt        New Text Document - Copy (6).txt        96.88
-New Text Document - Copy (2).txt        New Text Document - Copy.txt            93.33
-New Text Document - Copy (2).txt        New Text Document.txt                   79.25
-New Text Document - Copy (3).txt        New Text Document - Copy (4).txt        96.88
-New Text Document - Copy (3).txt        New Text Document - Copy (5).txt        96.88
-New Text Document - Copy (3).txt        New Text Document - Copy (6).txt        96.88
-New Text Document - Copy (3).txt        New Text Document - Copy.txt            93.33
-New Text Document - Copy (3).txt        New Text Document.txt                   79.25
-New Text Document - Copy (4).txt        New Text Document - Copy (5).txt        96.88
-New Text Document - Copy (4).txt        New Text Document - Copy (6).txt        96.88
-New Text Document - Copy (4).txt        New Text Document - Copy.txt            93.33
-New Text Document - Copy (4).txt        New Text Document.txt                   79.25
-New Text Document - Copy (5).txt        New Text Document - Copy (6).txt        96.88
-New Text Document - Copy (5).txt        New Text Document - Copy.txt            93.33
-New Text Document - Copy (5).txt        New Text Document.txt                   79.25
-New Text Document - Copy (6).txt        New Text Document - Copy.txt            93.33
-New Text Document - Copy (6).txt        New Text Document.txt                   79.25
-New Text Document - Copy.txt            New Text Document.txt                   85.71
+(env) E:\Users\Jarvis\PycharmProjects\fiddup>python -m fiddup -i C:\Temp -e mp4 -d -v
+[Info] Starting with analyze: True
+[Info] Starting with match threshold: 0.7
+[Info] Scanning for extensions: mp4
+[Info] Found 7 directories.
+[Info] Found 0 files.
+|████████████████████████████████████████| 7/7 [100%] in 0.0s (248.30/s)
+┌Results────────────────┬───────────────────────┬────────────┐
+│ Name                  │ Compared to           │ Similarity │
+│ New folder            │ New folder - Copy     │       0.74 │
+│ New folder - Copy     │ New folder - Copy (2) │       0.89 │
+│ New folder - Copy     │ New folder - Copy (3) │       0.89 │
+│ New folder - Copy     │ New folder - Copy (4) │       0.89 │
+│ New folder - Copy     │ New folder - Copy (5) │       0.89 │
+│ New folder - Copy     │ New folder - Copy (6) │       0.89 │
+│ New folder - Copy (2) │ New folder - Copy (3) │       0.95 │
+│ New folder - Copy (2) │ New folder - Copy (4) │       0.95 │
+│ New folder - Copy (2) │ New folder - Copy (5) │       0.95 │
+│ New folder - Copy (2) │ New folder - Copy (6) │       0.95 │
+│ New folder - Copy (3) │ New folder - Copy (4) │       0.95 │
+│ New folder - Copy (3) │ New folder - Copy (5) │       0.95 │
+│ New folder - Copy (3) │ New folder - Copy (6) │       0.95 │
+│ New folder - Copy (4) │ New folder - Copy (5) │       0.95 │
+│ New folder - Copy (4) │ New folder - Copy (6) │       0.95 │
+│ New folder - Copy (5) │ New folder - Copy (6) │       0.95 │
+└───────────────────────┴───────────────────────┴────────────┘
 ```
