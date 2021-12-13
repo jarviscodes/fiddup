@@ -15,8 +15,9 @@ Only outputs above a specified similarity are stored.
 `pip3 install fiddup`
 
 ### From Sauce
-`git pull https://github.com/jarviscodes/fiddup`
-`setup.py install`
+* `git pull https://github.com/jarviscodes/fiddup`
+
+* `setup.py install`
 
 ## Usage
 ```
