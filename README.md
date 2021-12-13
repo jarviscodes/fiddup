@@ -8,14 +8,15 @@ Useful to scan through archives of books, documents, downloads, movies, music, .
 Outputs the original filename, the compared filename, and similarity.
 Only outputs above a specified similarity are stored.
 
-## Depends
+## Installation
 
-Install through
-`pip3 install -r requirements.txt`
+### From PyPi
 
-Or install individually:
-* `pip3 install click`
-* `pip3 install colorama`
+`pip3 install fiddup`
+
+### From Sauce
+`git pull https://github.com/jarviscodes/fiddup`
+`setup.py install`
 
 ## Usage
 ```
