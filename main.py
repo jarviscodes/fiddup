@@ -12,7 +12,7 @@ class FiddupResult(object):
     def __init__(self, base_file, compared_file, similarity):
         self.base_file = base_file
         self.compared_file = compared_file
-        self.similarity = similarity
+        self.similarity = round(similarity * 100, 2)
 
     def __str__(self):
         return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: >15}"
@@ -22,7 +22,7 @@ class FiddupResult(object):
 @click.option("--inpath", type=str)
 @click.option("--analyze", type=bool, default=True)
 @click.option("--threshold", type=float, default=0.7)
-@click.option("--extensions", multiple=True, default=["mp3", "mp4", "wma"])
+@click.option("--extensions", "-e", multiple=True, default=["mp3", "mp4", "wma"])
 @click.option("--verbose", type=bool, default=False)
 def fiddup(
     verbose,
@@ -63,7 +63,7 @@ def fiddup(
                     compared_file=cmpfile,
                     similarity=SequenceMatcher(None, file, cmpfile).ratio(),
                 )
-                if _fu.similarity > threshold:
+                if _fu.similarity >= threshold * 100:
                     _result_list.append(_fu)
 
     click.secho(f"[{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}]")
