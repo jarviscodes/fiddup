@@ -17,6 +17,9 @@ class FiddupResult(object):
     def __str__(self):
         return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: >15}"
 
+    def __eq__(self, other):
+        return self.base_file == other.compared_file and self.compared_file == other.base_file
+
 
 @click.command()
 @click.option("--inpath", "-i", type=str, required=True)
@@ -59,7 +62,8 @@ def fiddup(
                     similarity=SequenceMatcher(None, file, cmpfile).ratio(),
                 )
                 if _fu.similarity >= threshold * 100:
-                    _result_list.append(_fu)
+                    if _fu not in _result_list:
+                        _result_list.append(_fu)
 
     click.secho(f"[{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}]")
     click.secho(f"{Style.BRIGHT}{'Original': <40}{'Compared to': <40}{'Match': <15}")
