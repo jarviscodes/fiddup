@@ -43,8 +43,8 @@ Options:
 [Info] Scanning for extensions: mp4
 [Info] Found 7 directories.
 [Info] Found 0 files.
-|████████████████████████████████████████| 7/7 [100%] in 0.0s (248.30/s)
-┌Results────────────────┬───────────────────────┬────────────┐
+|###################################| 7/7 [100%] in 0.0s (248.30/s)
+ Results────────────────┬───────────────────────┬────────────
 │ Name                  │ Compared to           │ Similarity │
 │ New folder            │ New folder - Copy     │       0.74 │
 │ New folder - Copy     │ New folder - Copy (2) │       0.89 │
@@ -62,5 +62,5 @@ Options:
 │ New folder - Copy (4) │ New folder - Copy (5) │       0.95 │
 │ New folder - Copy (4) │ New folder - Copy (6) │       0.95 │
 │ New folder - Copy (5) │ New folder - Copy (6) │       0.95 │
-└───────────────────────┴───────────────────────┴────────────┘
+ ───────────────────────┴───────────────────────┴──────────── 
 ```
