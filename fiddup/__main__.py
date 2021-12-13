@@ -1,38 +1,11 @@
 import glob
 import click
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 from difflib import SequenceMatcher
 from pathlib import Path
 from alive_progress import alive_bar
-from terminaltables import SingleTable
-
-
-def prepare_table_list():
-    table_data = [
-        [f'{Style.BRIGHT}Name{Style.RESET_ALL}', f'{Style.BRIGHT}Compared to{Style.RESET_ALL}', f'{Style.BRIGHT}Similarity{Style.RESET_ALL}'],
-    ]
-
-    return table_data
-
-
-class FiddupResult(object):
-    base_file: str
-    compared_file: str
-    similarity: float
-
-    def __init__(self, base_file, compared_file, similarity):
-        self.base_file = base_file
-        self.compared_file = compared_file
-        self.similarity = round(similarity, 2)
-
-    def __str__(self):
-        return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: <15}"
-
-    def __eq__(self, other):
-        return self.base_file == other.compared_file and self.compared_file == other.base_file
-
-    def as_terminaltable_row(self):
-        return [self.base_file, self.compared_file, self.similarity]
+from fiddup.views import prepare_table_header, show_table_data
+from fiddup.result import FiddupResult
 
 
 @click.command()
@@ -42,7 +15,7 @@ class FiddupResult(object):
 @click.option("--extensions", "-e", multiple=True, default=["mp3", "mp4", "wma"], required=True)
 @click.option("--directory", "-d", is_flag=True)
 @click.option("--verbose", "-v", is_flag=True)
-def fiddup(
+def main(
         verbose,
         extensions,
         directory: bool = True,
@@ -54,7 +27,7 @@ def fiddup(
     _result_list = []
     _file_count = 0
     _dir_count = 0
-    table_data = prepare_table_list()
+    table_data = prepare_table_header()
 
     if verbose:
         click.secho(
@@ -103,11 +76,7 @@ def fiddup(
                             _result_list.append(_fu)
             bar()
 
-    table = SingleTable(table_data, f"{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}")
-    table.inner_heading_row_border = False
-    table.justify_columns = {0: 'left', 1: 'left', 2: 'right'}
-    print(table.table)
-
+    show_table_data(table_data)
 
 if __name__ == "__main__":
-    fiddup()
+    main()

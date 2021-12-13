@@ -22,7 +22,7 @@ setup(
     install_requires=["click", "colorama", "alive-progress", "terminaltables"],
     entry_points={
         "console_scripts": [
-            "fiddup=fiddup.__main__:fiddup"
+            "fiddup=fiddup.__main__:main"
         ]
     }
 )
