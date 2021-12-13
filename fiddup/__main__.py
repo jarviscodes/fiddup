@@ -2,6 +2,7 @@ import glob
 import click
 from colorama import Fore, Back, Style
 from difflib import SequenceMatcher
+from pathlib import Path
 
 
 class FiddupResult(object):
@@ -15,7 +16,7 @@ class FiddupResult(object):
         self.similarity = round(similarity * 100, 2)
 
     def __str__(self):
-        return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: >15}"
+        return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: <15}"
 
     def __eq__(self, other):
         return self.base_file == other.compared_file and self.compared_file == other.base_file
@@ -26,10 +27,12 @@ class FiddupResult(object):
 @click.option("--analyze", "-a", type=bool, default=True)
 @click.option("--threshold", "-t", type=float, default=0.7)
 @click.option("--extensions", "-e", multiple=True, default=["mp3", "mp4", "wma"], required=True)
+@click.option("--directory", "-d", type=bool, default=True)
 @click.option("--verbose", "-v", is_flag=True)
 def fiddup(
     verbose,
     extensions,
+    directory: bool = True,
     inpath: str = None,
     analyze: bool = True,
     threshold: float = 0.7,
@@ -48,10 +51,20 @@ def fiddup(
             f"[{Fore.CYAN}Info{Style.RESET_ALL}] Scanning for extensions: {', '.join(extensions)}"
         )
 
+    if directory:
+        # Scan the inpath for entries
+        for path in glob.glob(f"{inpath}\\*"):
+            ppath = Path(path)
+            if ppath.is_dir():
+                # Need only last part because it is filename
+                _file_list.append(str(*ppath.parts[-1:]))
 
     for ext in extensions:
+        # Scan the inpath for the specified extensions
         for file in glob.glob(f"{inpath}\\*.{ext}"):
-            _file_list.append(file)
+            ppath = Path(file)
+            # Only filename
+            _file_list.append(str(*ppath.parts[-1:]))
 
     for file in _file_list:
         for cmpfile in _file_list:
