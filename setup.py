@@ -19,7 +19,7 @@ setup(
     ],
     packages=["fiddup"],
     include_package_data=True,
-    install_requires=["click", "colorama"],
+    install_requires=["click", "colorama", "alive-progress"],
     entry_points={
         "console_scripts": [
             "fiddup=fiddup.__main__:fiddup"
