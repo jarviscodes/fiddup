@@ -35,30 +35,44 @@ Options:
 ## Example output
 
 ```
-(venv) C:\Users\Cedric\PycharmProjects\fiddup>python main.py --inpath C:\Temp\ -e txt -e pdf -v
-[Info] Starting with analyze: True
-[Info] Starting with match threshold: 0.7
-[Info] Scanning for extensions: txt, pdf
+(env) E:\Users\Jarvis\PycharmProjects\fiddup>python -m fiddup -i C:\Temp -e txt -d True
 [Results]
 Original                                Compared to                             Match          
-C:\Temp\Movie-1-About-Fish.txt          C:\Temp\Movie-2-Fish.txt                          85.19
-C:\Temp\Movie-1-About-Fish.txt          C:\Temp\Ebook-1-About-Fish.pdf                    76.67
-C:\Temp\Movie-1-About-Fish.txt          C:\Temp\Ebook-2-About-Fish.pdf                    73.33
-C:\Temp\Movie-1-About-Fish.txt          C:\Temp\Ebook-3-About-Fish.pdf                    73.33
-C:\Temp\Movie-2-Fish.txt                C:\Temp\Movie-1-About-Fish.txt                    85.19
-C:\Temp\Ebook about fish.pdf            C:\Temp\Ebook-1-About-Fish.pdf                    82.76
-C:\Temp\Ebook about fish.pdf            C:\Temp\Ebook-2-About-Fish.pdf                    82.76
-C:\Temp\Ebook about fish.pdf            C:\Temp\Ebook-3-About-Fish.pdf                    82.76
-C:\Temp\Ebook-1-About-Fish.pdf          C:\Temp\Movie-1-About-Fish.txt                    76.67
-C:\Temp\Ebook-1-About-Fish.pdf          C:\Temp\Ebook about fish.pdf                      82.76
-C:\Temp\Ebook-1-About-Fish.pdf          C:\Temp\Ebook-2-About-Fish.pdf                    96.67
-C:\Temp\Ebook-1-About-Fish.pdf          C:\Temp\Ebook-3-About-Fish.pdf                    96.67
-C:\Temp\Ebook-2-About-Fish.pdf          C:\Temp\Movie-1-About-Fish.txt                    73.33
-C:\Temp\Ebook-2-About-Fish.pdf          C:\Temp\Ebook about fish.pdf                      82.76
-C:\Temp\Ebook-2-About-Fish.pdf          C:\Temp\Ebook-1-About-Fish.pdf                    96.67
-C:\Temp\Ebook-2-About-Fish.pdf          C:\Temp\Ebook-3-About-Fish.pdf                    96.67
-C:\Temp\Ebook-3-About-Fish.pdf          C:\Temp\Movie-1-About-Fish.txt                    73.33
-C:\Temp\Ebook-3-About-Fish.pdf          C:\Temp\Ebook about fish.pdf                      82.76
-C:\Temp\Ebook-3-About-Fish.pdf          C:\Temp\Ebook-1-About-Fish.pdf                    96.67
-C:\Temp\Ebook-3-About-Fish.pdf          C:\Temp\Ebook-2-About-Fish.pdf                    96.67
+New folder                              New folder - Copy                       74.07
+New folder - Copy                       New folder - Copy (2)                   89.47
+New folder - Copy                       New folder - Copy (3)                   89.47
+New folder - Copy                       New folder - Copy (4)                   89.47
+New folder - Copy                       New folder - Copy (5)                   89.47
+New folder - Copy                       New folder - Copy (6)                   89.47
+New folder - Copy (2)                   New folder - Copy (3)                   95.24
+New folder - Copy (2)                   New folder - Copy (4)                   95.24
+New folder - Copy (2)                   New folder - Copy (5)                   95.24
+New folder - Copy (2)                   New folder - Copy (6)                   95.24
+New folder - Copy (3)                   New folder - Copy (4)                   95.24
+New folder - Copy (3)                   New folder - Copy (5)                   95.24
+New folder - Copy (3)                   New folder - Copy (6)                   95.24
+New folder - Copy (4)                   New folder - Copy (5)                   95.24
+New folder - Copy (4)                   New folder - Copy (6)                   95.24
+New folder - Copy (5)                   New folder - Copy (6)                   95.24
+New Text Document - Copy (2).txt        New Text Document - Copy (3).txt        96.88
+New Text Document - Copy (2).txt        New Text Document - Copy (4).txt        96.88
+New Text Document - Copy (2).txt        New Text Document - Copy (5).txt        96.88
+New Text Document - Copy (2).txt        New Text Document - Copy (6).txt        96.88
+New Text Document - Copy (2).txt        New Text Document - Copy.txt            93.33
+New Text Document - Copy (2).txt        New Text Document.txt                   79.25
+New Text Document - Copy (3).txt        New Text Document - Copy (4).txt        96.88
+New Text Document - Copy (3).txt        New Text Document - Copy (5).txt        96.88
+New Text Document - Copy (3).txt        New Text Document - Copy (6).txt        96.88
+New Text Document - Copy (3).txt        New Text Document - Copy.txt            93.33
+New Text Document - Copy (3).txt        New Text Document.txt                   79.25
+New Text Document - Copy (4).txt        New Text Document - Copy (5).txt        96.88
+New Text Document - Copy (4).txt        New Text Document - Copy (6).txt        96.88
+New Text Document - Copy (4).txt        New Text Document - Copy.txt            93.33
+New Text Document - Copy (4).txt        New Text Document.txt                   79.25
+New Text Document - Copy (5).txt        New Text Document - Copy (6).txt        96.88
+New Text Document - Copy (5).txt        New Text Document - Copy.txt            93.33
+New Text Document - Copy (5).txt        New Text Document.txt                   79.25
+New Text Document - Copy (6).txt        New Text Document - Copy.txt            93.33
+New Text Document - Copy (6).txt        New Text Document.txt                   79.25
+New Text Document - Copy.txt            New Text Document.txt                   85.71
 ```
