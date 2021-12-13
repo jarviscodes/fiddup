@@ -8,6 +8,14 @@ Useful to scan through archives of books, documents, downloads, movies, music, .
 Outputs the original filename, the compared filename, and similarity.
 Only outputs above a specified similarity are stored.
 
+## Depends
+
+Install through
+`pip3 install -r requirements.txt`
+
+Or install individually:
+* `pip3 install click`
+* `pip3 install colorama`
 
 ## Usage
 ```
