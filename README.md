@@ -25,42 +25,21 @@ Usage: python -m fiddup [OPTIONS]
 
 Options:
   -i, --inpath TEXT      [required]
-  -a, --analyze BOOLEAN
+  -a, --assistant
   -t, --threshold FLOAT
   -e, --extensions TEXT  [required]
   -d, --directory
   -v, --verbose
+  -h, --hashmode
   --help                 Show this message and exit.
 
-```
-
-## Example output
 
 ```
-(env) E:\Users\Jarvis\PycharmProjects\fiddup>python -m fiddup -i C:\Temp -e mp4 -d -v
-[Info] Starting with analyze: True
-[Info] Starting with match threshold: 0.7
-[Info] Scanning for extensions: mp4
-[Info] Found 7 directories.
-[Info] Found 0 files.
-|###################################| 7/7 [100%] in 0.0s (248.30/s)
- Results────────────────┬───────────────────────┬────────────
-│ Name                  │ Compared to           │ Similarity │
-│ New folder            │ New folder - Copy     │       0.74 │
-│ New folder - Copy     │ New folder - Copy (2) │       0.89 │
-│ New folder - Copy     │ New folder - Copy (3) │       0.89 │
-│ New folder - Copy     │ New folder - Copy (4) │       0.89 │
-│ New folder - Copy     │ New folder - Copy (5) │       0.89 │
-│ New folder - Copy     │ New folder - Copy (6) │       0.89 │
-│ New folder - Copy (2) │ New folder - Copy (3) │       0.95 │
-│ New folder - Copy (2) │ New folder - Copy (4) │       0.95 │
-│ New folder - Copy (2) │ New folder - Copy (5) │       0.95 │
-│ New folder - Copy (2) │ New folder - Copy (6) │       0.95 │
-│ New folder - Copy (3) │ New folder - Copy (4) │       0.95 │
-│ New folder - Copy (3) │ New folder - Copy (5) │       0.95 │
-│ New folder - Copy (3) │ New folder - Copy (6) │       0.95 │
-│ New folder - Copy (4) │ New folder - Copy (5) │       0.95 │
-│ New folder - Copy (4) │ New folder - Copy (6) │       0.95 │
-│ New folder - Copy (5) │ New folder - Copy (6) │       0.95 │
- ───────────────────────┴───────────────────────┴──────────── 
-```
+
+### Assistant
+
+Outputs a filename1, filename2, name similarity table. Useful when sorting out things manually on name base.
+
+### Hashmode
+
+Get the hashes from the files and compare the files content-wise by doing so.
