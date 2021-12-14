@@ -50,8 +50,8 @@ def run_hashmode(verbose, extensions, inpath):
                         _fu = FiddupHashResult(
                             base_file=file, compared_file=cmpfile, file_hash=file_hash
                         )
-                        table_data.append(_fu.as_terminaltable_row())
                         if _fu not in _result_list:
+                            table_data.append(_fu.as_terminaltable_row())
                             _result_list.append(_fu)
             bar()
 
