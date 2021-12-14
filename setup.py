@@ -14,15 +14,9 @@ setup(
     author="Jarvis Codes",
     author_email="jarvis@jayradz.com",
     license="MIT",
-    classifiers=[
-        "Programming Language :: Python :: 3"
-    ],
+    classifiers=["Programming Language :: Python :: 3"],
     packages=["fiddup"],
     include_package_data=True,
     install_requires=["click", "colorama", "alive-progress", "terminaltables"],
-    entry_points={
-        "console_scripts": [
-            "fiddup=fiddup.__main__:main"
-        ]
-    }
+    entry_points={"console_scripts": ["fiddup=fiddup.__main__:main"]},
 )
