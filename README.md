@@ -43,3 +43,7 @@ Outputs a filename1, filename2, name similarity table. Useful when sorting out t
 ### Hashmode
 
 Get the hashes from the files and compare the files content-wise by doing so.
+
+## Testing
+
+`python -m unittest discover -s tests`

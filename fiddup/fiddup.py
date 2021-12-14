@@ -7,7 +7,7 @@ from alive_progress import alive_bar
 from fiddup.views import (
     prepare_name_table_header,
     prepare_hash_table_header,
-    show_table_data,
+    get_table_data,
 )
 from fiddup.result import FiddupNameResult, FiddupHashResult
 from hashlib import sha1
@@ -55,7 +55,7 @@ def run_hashmode(verbose, extensions, inpath):
                             _result_list.append(_fu)
             bar()
 
-    show_table_data(table_data)
+    print(get_table_data(table_data).table)
 
 
 def run_assistant(verbose, extensions, directory, inpath, threshold):
@@ -103,4 +103,4 @@ def run_assistant(verbose, extensions, directory, inpath, threshold):
                             _result_list.append(_fu)
             bar()
 
-    show_table_data(table_data)
+    print(get_table_data(table_data).table)
