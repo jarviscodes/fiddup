@@ -8,6 +8,9 @@ Useful to scan through archives of books, documents, downloads, movies, music, .
 Outputs the original filename, the compared filename, and similarity.
 Only outputs above a specified similarity are stored.
 
+Fiddup is non-destructive. It will report similarities and duplicates, but it will not remove them.
+
+
 ## Installation
 
 ### From PyPi
