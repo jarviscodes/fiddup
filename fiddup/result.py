@@ -23,9 +23,6 @@ class FiddupNameResult(FiddupResultBase):
         super().__init__(base_file, compared_file)
         self.similarity = round(similarity, 2)
 
-    def __str__(self):
-        return f"{self.base_file: <40}{self.compared_file: <40}{self.similarity: <15}"
-
     def as_terminaltable_row(self):
         return [self.base_file, self.compared_file, self.similarity]
 

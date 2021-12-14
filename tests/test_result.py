@@ -1,10 +1,8 @@
 import unittest
-from unittest.mock import patch
-from io import StringIO
-
 from fiddup.result import FiddupHashResult, FiddupNameResult, FiddupResultBase
 
-class ResultTest(unittest.TestCase):
+
+class ResultBaseTest(unittest.TestCase):
     def test_base_equals(self):
         x = FiddupResultBase(base_file="file1", compared_file="file2")
         z = x
@@ -17,6 +15,33 @@ class ResultTest(unittest.TestCase):
         y = FiddupResultBase(base_file="file3", compared_file="file4")
 
         self.assertNotEqual(x, y)
+
+
+class NameResultTest(unittest.TestCase):
+    compare_row = ["file1", "file2", 0.5]
+
+    def test_terminaltable_row(self):
+        """ Check if the row data get's parsed as expected """
+        x = FiddupNameResult(base_file="file1", compared_file="file2", similarity=0.5)
+        row = x.as_terminaltable_row()
+        self.assertListEqual(row, self.compare_row)
+
+    def test_name_equals(self):
+        """ Check if the base eq operator is called correctly """
+        x = FiddupNameResult(base_file="file1", compared_file="file2", similarity=0.5)
+        y = FiddupNameResult(base_file="file2", compared_file="file1", similarity=0.5)
+        self.assertEqual(x, y)
+
+
+class HashResultTest(unittest.TestCase):
+    compare_row = ["file1", "file2", "aabbccddeeffaabbccddeeffaabbccddeeff"]
+
+    def test_terminaltable_row(self):
+        """ Check if the row data get's parsed as expected """
+        x = FiddupHashResult(base_file="file1", compared_file="file2", file_hash="aabbccddeeffaabbccddeeffaabbccddeeff")
+        row = x.as_terminaltable_row()
+        self.assertListEqual(row, self.compare_row)
+
 
 if __name__ == '__main__':
     unittest.main()

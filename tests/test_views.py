@@ -4,6 +4,7 @@ from io import StringIO
 
 from fiddup.views import prepare_hash_table_header, prepare_name_table_header, refine_inputs, get_table_data
 
+
 class TestTableHeaders(unittest.TestCase):
     def test_name_table(self):
         table_header = prepare_name_table_header()
