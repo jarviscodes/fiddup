@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="fiddup",
-    version="2.1.1",
+    version="2.1.2",
     description="Find files with similar names.",
     long_description=README,
     long_description_content_type="text/markdown",
