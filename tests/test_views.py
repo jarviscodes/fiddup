@@ -14,7 +14,7 @@ class TestTableHeaders(unittest.TestCase):
         self.assertEqual(table_header_columns, 3, "Need exactly 3 header columns.")
 
     def test_hash_table(self):
-        table_header = prepare_name_table_header()
+        table_header = prepare_hash_table_header()
         self.assertIsInstance(table_header, list, "Table header must be list of columns.")
         table_header_length = len(table_header)
         table_header_columns = len(table_header[0])

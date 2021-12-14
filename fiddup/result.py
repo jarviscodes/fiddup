@@ -10,6 +10,9 @@ class FiddupResultBase(object):
         return (
             self.base_file == other.compared_file
             and self.compared_file == other.base_file
+        ) or (
+            self.base_file == other.base_file
+            and self.compared_file == other.compared_file
         )
 
 
