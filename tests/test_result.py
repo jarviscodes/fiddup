@@ -12,8 +12,11 @@ class ResultTest(unittest.TestCase):
         self.assertEqual(x, y)
         self.assertEqual(x, z)
 
+    def test_base_not_equals(self):
+        x = FiddupResultBase(base_file="file1", compared_file="file2")
+        y = FiddupResultBase(base_file="file3", compared_file="file4")
 
-
+        self.assertNotEqual(x, y)
 
 if __name__ == '__main__':
     unittest.main()
