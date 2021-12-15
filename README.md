@@ -5,8 +5,7 @@
 Small tool to quickly scan a directory for files of similar names.
 Useful to scan through archives of books, documents, downloads, movies, music, ...
 
-Outputs the original filename, the compared filename, and similarity.
-Only outputs above a specified similarity are stored.
+Two modes are available: Assistant (name based comparison), and Hash mode (hash comparison).
 
 Fiddup is non-destructive. It will report similarities and duplicates, but it will not remove them.
 

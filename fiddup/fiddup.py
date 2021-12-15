@@ -15,12 +15,14 @@ from hashlib import sha1
 
 def get_sha_hash(filepath):
     file_hash = sha1()
+    limiter = 0
     with open(filepath, "rb") as _f:
         while True:
             in_bytes = _f.read(65536)
-            if not in_bytes:
+            if not in_bytes or limiter >= 5:
                 break
             file_hash.update(in_bytes)
+            limiter += 1
     return file_hash.hexdigest()
 
 
