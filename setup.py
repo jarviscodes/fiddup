@@ -7,7 +7,7 @@ README = (HERE / "README.md").read_text()
 setup(
     name="fiddup",
     version="2.2.0",
-    description="Find files with similar names.",
+    description="Utility to find similar files based on filename or hash.",
     long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/jarviscodes/fiddup",

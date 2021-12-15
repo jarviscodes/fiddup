@@ -27,16 +27,23 @@ In case of false positives, first try to increase the `--chunk_count` flag. (def
 ```
 Usage: python -m fiddup [OPTIONS]
 
-Options:
-  -i, --inpath TEXT      [required]
-  -a, --assistant
-  -t, --threshold FLOAT
-  -e, --extensions TEXT  [required]
-  -d, --directory
-  -v, --verbose
-  -h, --hashmode
-  --help                 Show this message and exit.
+  Fiddup is a Non-destructive file deduplicator that can assist you to find
+  similar or duplicate files.
 
+Options:
+  -i, --inpath TEXT      Path to scan for duplicates.  [required]
+  -a, --assistant        Toggles Assistant mode (name similarity search).
+  -t, --threshold FLOAT  Similarity threshold. Assistant will only show
+                         similarities > this.
+  -e, --extensions TEXT  List of extensions to scan for, specify multiple with
+                         e.g.: -e zip -e txt -e pdf.  [required]
+  -d, --directory        Include directories in comparison. Only available in
+                         assistant mode.
+  -v, --verbose          Show verbose output.
+  -h, --hashmode         Toggles hash mode (file hash comparison).
+  --chunk_count INTEGER  Number of chunks to read from files while hashing.
+                         Higher = more accuracy = Slower.
+  --help                 Show this message and exit.
 
 ```
 
