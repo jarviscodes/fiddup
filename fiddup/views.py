@@ -36,7 +36,7 @@ def get_table_data(table_data):
 
 
 def refine_inputs(
-    verbose, extensions, directory, inpath, assistant, hashmode, threshold
+    verbose, extensions, directory, inpath, assistant, hashmode, threshold, chunk_count
 ):
 
     if assistant and hashmode:
@@ -67,4 +67,4 @@ def refine_inputs(
         click.secho(f"{INFO_PREFIX} Starting with inpath: {inpath}")
         click.secho(f"{INFO_PREFIX} Starting with hashmode: {hashmode}")
 
-    return verbose, extensions, directory, inpath, assistant, hashmode, threshold
+    return verbose, extensions, directory, inpath, assistant, hashmode, threshold, chunk_count

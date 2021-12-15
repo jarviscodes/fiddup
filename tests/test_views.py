@@ -54,30 +54,30 @@ class TestInputs(unittest.TestCase):
     def test_refine_multimode(self):
         with self.assertRaises(SystemExit):
             with patch('sys.stdout', new=StringIO()) as fakeOutput:
-                refine_inputs(assistant=True, hashmode=True, verbose=False,extensions=False, directory=False, inpath="", threshold=0.5)
+                refine_inputs(assistant=True, hashmode=True, verbose=False,extensions=False, directory=False, inpath="", threshold=0.5, chunk_count=5)
                 self.assertTrue("Cannot have both" in fakeOutput.getValue().strip())
 
     def test_refine_nomode(self):
         with self.assertRaises(SystemExit):
             with patch('sys.stdout', new=StringIO()) as fakeOutput:
-                refine_inputs(assistant=False, hashmode=False, verbose=False,extensions=False, directory=False, inpath="", threshold=0.5)
+                refine_inputs(assistant=False, hashmode=False, verbose=False,extensions=False, directory=False, inpath="", threshold=0.5, chunk_count=5)
                 self.assertTrue("Need at least -a or -h" in fakeOutput.getValue().strip())
 
     def test_refine_extensions(self):
-        verbose, extensions, directory, inpath, assistant, hashmode, threshold = \
-            refine_inputs(assistant=True, hashmode=False, verbose=False, extensions=self.extensions_dirty, directory=False, inpath="", threshold=0.5)
+        verbose, extensions, directory, inpath, assistant, hashmode, threshold, chunk_count = \
+            refine_inputs(assistant=True, hashmode=False, verbose=False, extensions=self.extensions_dirty, directory=False, inpath="", threshold=0.5, chunk_count=5)
         self.assertListEqual(extensions, self.extensions_clean)
 
     def test_out_of_range_threshold(self):
         with self.assertRaises(SystemExit):
             with patch('sys.stdout', new=StringIO()) as fakeOutput:
-                refine_inputs(assistant=True, hashmode=False, verbose=False, extensions=self.extensions_dirty, directory=False, inpath="", threshold=1.8)
+                refine_inputs(assistant=True, hashmode=False, verbose=False, extensions=self.extensions_dirty, directory=False, inpath="", threshold=1.8, chunk_count=5)
                 self.assertTrue("Please specify a value" in fakeOutput.getValue().strip())
 
     def test_hashmode_directories(self):
         with self.assertRaises(SystemExit):
             with patch('sys.stdout', new=StringIO()) as fakeOutput:
-                refine_inputs(assistant=False, hashmode=True, verbose=False, extensions=self.extensions_clean, directory=True, inpath="", threshold=0.5)
+                refine_inputs(assistant=False, hashmode=True, verbose=False, extensions=self.extensions_clean, directory=True, inpath="", threshold=0.5, chunk_count=5)
                 self.assertTrue("Cant use hash mode for directories" in fakeOutput.getValue().strip())
 
 

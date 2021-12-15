@@ -9,6 +9,8 @@ Two modes are available: Assistant (name based comparison), and Hash mode (hash 
 
 Fiddup is non-destructive. It will report similarities and duplicates, but it will not remove them.
 
+In order to keep things performant and memory-limited, hashmode only hashes parts of both files.
+In case of false positives, first try to increase the `--chunk_count` flag. (default=5)
 
 ## Installation
 

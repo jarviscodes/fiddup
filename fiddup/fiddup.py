@@ -13,20 +13,20 @@ from fiddup.result import FiddupNameResult, FiddupHashResult
 from hashlib import sha1
 
 
-def get_sha_hash(filepath):
+def get_sha_hash(filepath, chunk_count):
     file_hash = sha1()
     limiter = 0
     with open(filepath, "rb") as _f:
         while True:
             in_bytes = _f.read(65536)
-            if not in_bytes or limiter >= 5:
+            if not in_bytes or limiter >= chunk_count:
                 break
             file_hash.update(in_bytes)
             limiter += 1
     return file_hash.hexdigest()
 
 
-def run_hashmode(verbose, extensions, inpath):
+def run_hashmode(verbose, extensions, inpath, chunk_count=5):
     _file_list = []
     _result_list = []
     _file_count = 0
@@ -46,8 +46,8 @@ def run_hashmode(verbose, extensions, inpath):
             for cmpfile in _file_list:
                 if file != cmpfile:
                     # Get file hash for "file":
-                    file_hash = get_sha_hash(file)
-                    cmpfile_hash = get_sha_hash(cmpfile)
+                    file_hash = get_sha_hash(file, chunk_count)
+                    cmpfile_hash = get_sha_hash(cmpfile, chunk_count)
                     if file_hash == cmpfile_hash:
                         _fu = FiddupHashResult(
                             base_file=file, compared_file=cmpfile, file_hash=file_hash
