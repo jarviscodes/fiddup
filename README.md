@@ -3,6 +3,8 @@
 ![Version 2.2.0](https://img.shields.io/badge/Version-2.2.0-blue)
 ![MIT License](https://img.shields.io/badge/License-MIT-success)
 ![Build flow](https://github.com/jarviscodes/fiddup/actions/workflows/lint_test_coverage.yml/badge.svg)
+![Test count](https://github.com/jarviscodes/fiddup/actions/workflows/lint_test_coverage.yml/tests-badge.svg)
+![Coverage](https://github.com/jarviscodes/fiddup/actions/workflows/lint_test_coverage.yml/coverage-badge.svg)
 
 **Fi**le **D**e**Dup**licator
 
