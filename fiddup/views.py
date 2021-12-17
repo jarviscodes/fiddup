@@ -1,6 +1,6 @@
 from colorama import Style, Fore
 from terminaltables import SingleTable
-from fiddup.constants import INFO_PREFIX, WARN_PREFIX, ERR_PREFIX
+from fiddup.constants import INFO_PREFIX, ERR_PREFIX
 import click
 
 
@@ -66,7 +66,8 @@ def refine_inputs(
 
     if hashmode and directory:
         click.secho(
-            f"{ERR_PREFIX} Cant use hash mode for directories. Remove -d or use assistant mode."
+            f"{ERR_PREFIX} Cant use hash mode for directories. "
+            f"Remove -d or use assistant mode."
         )
         exit()
 

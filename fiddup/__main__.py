@@ -29,13 +29,15 @@ from fiddup.fiddup import run_assistant, run_hashmode
     "-e",
     multiple=True,
     required=True,
-    help="List of extensions to scan for, specify multiple with e.g.: -e zip -e txt -e pdf.",
+    help="List of extensions to scan for. "
+         "Specify multiple with e.g.: -e zip -e txt -e pdf.",
 )
 @click.option(
     "--directory",
     "-d",
     is_flag=True,
-    help="Include directories in comparison. Only available in assistant mode.",
+    help="Include directories in comparison. "
+         "Only available in assistant mode.",
 )
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
 @click.option(
@@ -47,7 +49,8 @@ from fiddup.fiddup import run_assistant, run_hashmode
 @click.option(
     "--chunk_count",
     type=int,
-    help="Number of chunks to read from files while hashing. Higher = more accuracy = Slower.",
+    help="Number of chunks to read from files while hashing. "
+         "Higher = more accuracy = Slower.",
 )
 def main(
     verbose,
@@ -59,7 +62,8 @@ def main(
     threshold: float = 0.7,
     chunk_count: int = 5,
 ):
-    """Fiddup is a Non-destructive file deduplicator that can assist you to find similar or duplicate files."""
+    """Fiddup is a Non-destructive file deduplicator that can assist you
+    to find similar or duplicate files."""
     (
         verbose,
         extensions,

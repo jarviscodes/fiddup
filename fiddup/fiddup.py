@@ -81,7 +81,8 @@ def run_assistant(verbose, extensions, directory, inpath, threshold):
                 _dir_count += 1
         if verbose:
             click.secho(
-                f"[{Fore.CYAN}Info{Style.RESET_ALL}] Found {_dir_count} directories."
+                f"[{Fore.CYAN}Info{Style.RESET_ALL}] "
+                f"Found {_dir_count} directories."
             )
 
     for ext in extensions:
