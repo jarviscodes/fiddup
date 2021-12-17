@@ -1,12 +1,12 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Build
+name: PyTest and Coverage reports.
 
 on: [push]
 
 jobs:
-  build:
+  test_and_coverage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -19,34 +19,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install build
           pip install -r requirements.txt
-      - name: Run Linter
-        run: |
-          pip install flake8
-          flake8 .
       - name: Test with pytest-cov
         run: |
           pip install pytest
           pip install pytest-cov
           python -m pytest -v tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=fiddup --cov-report=xml --cov-report=html
-      - name: Generate Test Badge
-        run: |
-          pip install genbadge
-          pip install defusedxml
-          genbadge tests -i junit/test-results.xml
-      - name: Upload Test Badge
+      - name: Upload coverage report
         uses: actions/upload-artifact@v2
         with:
-          name: tests-badge.svg
-          path: tests-badge.svg
-      - name: Generate Coverage Badge
-        run: |
-          pip install genbadge
-          pip install defusedxml
-          genbadge coverage -i coverage.xml
-      - name: Upload coverage badge
-        uses: actions/upload-artifact@v2
-        with:
-          name: coverage-badge.svg
-          path: coverage-badge.svg
-      - name: Build Package
-        run: python -m build
+          name: coverage_report
+          path:
+          htmlcov/*
+          !htmlcov/.*
