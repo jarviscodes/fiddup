@@ -36,8 +36,8 @@ jobs:
       - name: Upload Test Badge
         uses: actions/upload-artifact@v2
         with:
-          - name: tests-badge.svg
-          - path: tests-badge.svg
+          name: tests-badge.svg
+          path: tests-badge.svg
       - name: Generate Coverage Badge
         run: |
           pip install genbadge
@@ -46,7 +46,7 @@ jobs:
       - name: Upload coverage badge
         uses: actions/upload-artifact@v2
         with:
-          - name: coverage-badge.svg
-          - path: coverage-badge.svg
+          name: coverage-badge.svg
+          path: coverage-badge.svg
       - name: Build Package
         run: python -m build
