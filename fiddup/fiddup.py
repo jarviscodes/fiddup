@@ -39,7 +39,9 @@ def run_hashmode(verbose, extensions, inpath, chunk_count=5):
             _file_list.append(str(ppath))
             _file_count += 1
     if verbose:
-        click.secho(f"[{Fore.CYAN}Info{Style.RESET_ALL}] Found {_file_count} files.")
+        click.secho(
+            f"[{Fore.CYAN}Info{Style.RESET_ALL}] Found {_file_count} files."
+        )
 
     with alive_bar(_file_count) as bar:
         for file in _file_list:
@@ -50,7 +52,9 @@ def run_hashmode(verbose, extensions, inpath, chunk_count=5):
                     cmpfile_hash = get_sha_hash(cmpfile, chunk_count)
                     if file_hash == cmpfile_hash:
                         _fu = FiddupHashResult(
-                            base_file=file, compared_file=cmpfile, file_hash=file_hash
+                            base_file=file,
+                            compared_file=cmpfile,
+                            file_hash=file_hash,
                         )
                         if _fu not in _result_list:
                             table_data.append(_fu.as_terminaltable_row())
@@ -88,7 +92,9 @@ def run_assistant(verbose, extensions, directory, inpath, threshold):
             _file_list.append(str(*ppath.parts[-1:]))
             _file_count += 1
     if verbose:
-        click.secho(f"[{Fore.CYAN}Info{Style.RESET_ALL}] Found {_file_count} files.")
+        click.secho(
+            f"[{Fore.CYAN}Info{Style.RESET_ALL}] Found {_file_count} files."
+        )
 
     with alive_bar(_dir_count + _file_count) as bar:
         for file in _file_list:
@@ -97,7 +103,9 @@ def run_assistant(verbose, extensions, directory, inpath, threshold):
                     _fu = FiddupNameResult(
                         base_file=file,
                         compared_file=cmpfile,
-                        similarity=SequenceMatcher(None, file, cmpfile).ratio(),
+                        similarity=SequenceMatcher(
+                            None, file, cmpfile
+                        ).ratio(),
                     )
                     if _fu.similarity >= threshold:
                         if _fu not in _result_list:

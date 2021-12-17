@@ -29,14 +29,23 @@ def prepare_hash_table_header():
 
 
 def get_table_data(table_data):
-    table = SingleTable(table_data, f"{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}")
+    table = SingleTable(
+        table_data, f"{Fore.LIGHTGREEN_EX}Results{Style.RESET_ALL}"
+    )
     table.inner_heading_row_border = False
     table.justify_columns = {0: "left", 1: "left", 2: "right"}
     return table
 
 
 def refine_inputs(
-    verbose, extensions, directory, inpath, assistant, hashmode, threshold, chunk_count
+    verbose,
+    extensions,
+    directory,
+    inpath,
+    assistant,
+    hashmode,
+    threshold,
+    chunk_count,
 ):
 
     if assistant and hashmode:
@@ -50,7 +59,9 @@ def refine_inputs(
     extensions = [ext.replace(".", "") for ext in extensions]
 
     if 0 > threshold or threshold > 1:
-        click.secho(f"{ERR_PREFIX} Please specify a value from 0.00 to 1.00 for -t")
+        click.secho(
+            f"{ERR_PREFIX} Please specify a value from 0.00 to 1.00 for -t"
+        )
         exit()
 
     if hashmode and directory:
@@ -61,8 +72,12 @@ def refine_inputs(
 
     if verbose:
         click.secho(f"{INFO_PREFIX} Starting with assistant: {assistant}")
-        click.secho(f"{INFO_PREFIX} Starting with match threshold: {threshold}")
-        click.secho(f"{INFO_PREFIX} Scanning for extensions: {', '.join(extensions)}")
+        click.secho(
+            f"{INFO_PREFIX} Starting with match threshold: {threshold}"
+        )
+        click.secho(
+            f"{INFO_PREFIX} Scanning for extensions: {', '.join(extensions)}"
+        )
         click.secho(f"{INFO_PREFIX} Starting with directory: {directory}")
         click.secho(f"{INFO_PREFIX} Starting with inpath: {inpath}")
         click.secho(f"{INFO_PREFIX} Starting with hashmode: {hashmode}")

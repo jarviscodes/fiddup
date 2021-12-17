@@ -5,7 +5,11 @@ from fiddup.fiddup import run_assistant, run_hashmode
 
 @click.command()
 @click.option(
-    "--inpath", "-i", type=str, required=True, help="Path to scan for duplicates."
+    "--inpath",
+    "-i",
+    type=str,
+    required=True,
+    help="Path to scan for duplicates.",
 )
 @click.option(
     "--assistant",
@@ -35,7 +39,10 @@ from fiddup.fiddup import run_assistant, run_hashmode
 )
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
 @click.option(
-    "--hashmode", "-h", is_flag=True, help="Toggles hash mode (file hash comparison)."
+    "--hashmode",
+    "-h",
+    is_flag=True,
+    help="Toggles hash mode (file hash comparison).",
 )
 @click.option(
     "--chunk_count",

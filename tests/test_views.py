@@ -19,7 +19,9 @@ class TestTableHeaders(unittest.TestCase):
         table_header_length = len(table_header)
         table_header_columns = len(table_header[0])
         self.assertEqual(table_header_length, 1, "Need exactly 1 header row.")
-        self.assertEqual(table_header_columns, 3, "Need exactly 3 header columns.")
+        self.assertEqual(
+            table_header_columns, 3, "Need exactly 3 header columns."
+        )
 
     def test_hash_table(self):
         table_header = prepare_hash_table_header()
@@ -29,7 +31,9 @@ class TestTableHeaders(unittest.TestCase):
         table_header_length = len(table_header)
         table_header_columns = len(table_header[0])
         self.assertEqual(table_header_length, 1, "Need exactly 1 header row.")
-        self.assertEqual(table_header_columns, 3, "Need exactly 3 header columns.")
+        self.assertEqual(
+            table_header_columns, 3, "Need exactly 3 header columns."
+        )
 
 
 class TestTableData(unittest.TestCase):
@@ -68,7 +72,9 @@ class TestInputs(unittest.TestCase):
                     threshold=0.5,
                     chunk_count=5,
                 )
-                self.assertTrue("Cannot have both" in fakeOutput.getvalue().strip())
+                self.assertTrue(
+                    "Cannot have both" in fakeOutput.getvalue().strip()
+                )
 
     def test_refine_nomode(self):
         with self.assertRaises(SystemExit):
@@ -157,14 +163,24 @@ class TestInputs(unittest.TestCase):
                 chunk_count=5,
             )
             print(fakeOutput)
-        self.assertTrue("Starting with assistant" in fakeOutput.getvalue().strip())
+        self.assertTrue(
+            "Starting with assistant" in fakeOutput.getvalue().strip()
+        )
         self.assertTrue(
             "Starting with match threshold" in fakeOutput.getvalue().strip()
         )
-        self.assertTrue("Scanning for extensions" in fakeOutput.getvalue().strip())
-        self.assertTrue("Starting with directory" in fakeOutput.getvalue().strip())
-        self.assertTrue("Starting with inpath" in fakeOutput.getvalue().strip())
-        self.assertTrue("Starting with hashmode" in fakeOutput.getvalue().strip())
+        self.assertTrue(
+            "Scanning for extensions" in fakeOutput.getvalue().strip()
+        )
+        self.assertTrue(
+            "Starting with directory" in fakeOutput.getvalue().strip()
+        )
+        self.assertTrue(
+            "Starting with inpath" in fakeOutput.getvalue().strip()
+        )
+        self.assertTrue(
+            "Starting with hashmode" in fakeOutput.getvalue().strip()
+        )
 
 
 if __name__ == "__main__":
