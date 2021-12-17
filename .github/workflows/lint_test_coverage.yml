@@ -33,18 +33,10 @@ jobs:
           pip install genbadge
           pip install defusedxml
           genbadge tests -i junit/test-results.xml
-        uses: action/upload-artifact@v2
-        with:
-          name: test-count-badge
-          path: /home/runner/work/fiddup/fiddup/tests-badge.svg
       - name: Generate Coverage Badge
         run: |
           pip install genbadge
           pip install defusedxml
           genbadge coverage -i coverage.xml
-        - uses: action/upload-artifact@v2
-          with:
-            name: coverage-badge
-            path: /home/runner/work/fiddup/fiddup/coverage-badge.svg
       - name: Build Package
         run: python -m build
