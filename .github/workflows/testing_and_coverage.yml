@@ -28,6 +28,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage_report
-          path:
-          htmlcov/*
-          !htmlcov/.*
+          path: |
+            htmlcov/*
+            !htmlcov/.*
