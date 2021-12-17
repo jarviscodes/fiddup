@@ -1,7 +1,17 @@
+# Environment
 venv/
 .idea/
+env/
+
+# Building
 dist/
 build/
 *.egg-info/
-env/
 *__pycache__*/
+
+# Testing and coverage
+.coverage
+coverage.xml
+.pytest_cache/
+junit/
+htmlcov/
