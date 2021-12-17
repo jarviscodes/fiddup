@@ -67,4 +67,13 @@ def refine_inputs(
         click.secho(f"{INFO_PREFIX} Starting with inpath: {inpath}")
         click.secho(f"{INFO_PREFIX} Starting with hashmode: {hashmode}")
 
-    return verbose, extensions, directory, inpath, assistant, hashmode, threshold, chunk_count
+    return (
+        verbose,
+        extensions,
+        directory,
+        inpath,
+        assistant,
+        hashmode,
+        threshold,
+        chunk_count,
+    )
