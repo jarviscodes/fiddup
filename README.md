@@ -1,5 +1,9 @@
 # Fiddup
 
+![Version 2.2.0](https://img.shields.io/badge/Version-2.2.0-blue)
+![MIT License](https://img.shields.io/badge/License-MIT-success)
+
+
 **Fi**le **D**e**Dup**licator
 
 Small tool to quickly scan a directory for files of similar names.
