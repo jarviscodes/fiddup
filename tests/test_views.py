@@ -60,8 +60,8 @@ class TestInputs(unittest.TestCase):
     extensions_clean = ["mp4", "mp3", "wma", "txt"]
 
     def test_refine_multimode(self):
-        with self.assertRaises(SystemExit):
-            with patch("sys.stdout", new=StringIO()) as fakeOutput:
+        with patch("sys.stdout", new=StringIO()) as fakeOutput:
+            with self.assertRaises(SystemExit):
                 refine_inputs(
                     assistant=True,
                     hashmode=True,
@@ -72,13 +72,13 @@ class TestInputs(unittest.TestCase):
                     threshold=0.5,
                     chunk_count=5,
                 )
-                self.assertTrue(
-                    "Cannot have both" in fakeOutput.getvalue().strip()
-                )
+            self.assertTrue(
+                "Cannot have both" in fakeOutput.getvalue().strip()
+            )
 
     def test_refine_nomode(self):
-        with self.assertRaises(SystemExit):
-            with patch("sys.stdout", new=StringIO()) as fakeOutput:
+        with patch("sys.stdout", new=StringIO()) as fakeOutput:
+            with self.assertRaises(SystemExit):
                 refine_inputs(
                     assistant=False,
                     hashmode=False,
@@ -89,9 +89,9 @@ class TestInputs(unittest.TestCase):
                     threshold=0.5,
                     chunk_count=5,
                 )
-                self.assertTrue(
-                    "Need at least -a or -h" in fakeOutput.getvalue().strip()
-                )
+            self.assertTrue(
+                "Need at least -a or -h" in fakeOutput.getvalue().strip()
+            )
 
     def test_refine_extensions(self):
         (
@@ -116,8 +116,8 @@ class TestInputs(unittest.TestCase):
         self.assertListEqual(extensions, self.extensions_clean)
 
     def test_out_of_range_threshold(self):
-        with self.assertRaises(SystemExit):
-            with patch("sys.stdout", new=StringIO()) as fakeOutput:
+        with patch("sys.stdout", new=StringIO()) as fakeOutput:
+            with self.assertRaises(SystemExit):
                 refine_inputs(
                     assistant=True,
                     hashmode=False,
@@ -128,13 +128,13 @@ class TestInputs(unittest.TestCase):
                     threshold=1.8,
                     chunk_count=5,
                 )
-                self.assertTrue(
-                    "Please specify a value" in fakeOutput.getvalue().strip()
-                )
+            self.assertTrue(
+                "Please specify a value" in fakeOutput.getvalue().strip()
+            )
 
     def test_hashmode_directories(self):
-        with self.assertRaises(SystemExit):
-            with patch("sys.stdout", new=StringIO()) as fakeOutput:
+        with patch("sys.stdout", new=StringIO()) as fakeOutput:
+            with self.assertRaises(SystemExit):
                 refine_inputs(
                     assistant=False,
                     hashmode=True,
@@ -145,10 +145,10 @@ class TestInputs(unittest.TestCase):
                     threshold=0.5,
                     chunk_count=5,
                 )
-                self.assertTrue(
-                    "Cant use hash mode for directories"
-                    in fakeOutput.getvalue().strip()
-                )
+            self.assertTrue(
+                "Cant use hash mode for directories"
+                in fakeOutput.getvalue().strip()
+            )
 
     def test_verbose_mode(self):
         with patch("sys.stdout", new=StringIO()) as fakeOutput:
@@ -162,7 +162,6 @@ class TestInputs(unittest.TestCase):
                 threshold=0.5,
                 chunk_count=5,
             )
-            print(fakeOutput)
         self.assertTrue(
             "Starting with assistant" in fakeOutput.getvalue().strip()
         )
