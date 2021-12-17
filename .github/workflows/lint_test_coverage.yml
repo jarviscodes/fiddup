@@ -28,11 +28,23 @@ jobs:
           pip install pytest
           pip install pytest-cov
           python -m pytest -v tests/ --doctest-modules --junitxml=junit/test-results.xml --cov=fiddup --cov-report=xml --cov-report=html
-      - name: Generate Badges
+      - name: Generate Test Badge
         run: |
           pip install genbadge
           pip install defusedxml
           genbadge tests -i junit/test-results.xml
+        uses: action/upload-artifact@v2
+        with:
+          name: test-count-badge
+          path: ./tests-badge.svg
+      - name: Generate Coverage Badge
+        run: |
+          pip install genbadge
+          pip install defusedxml
           genbadge coverage -i coverage.xml
+        - uses: action/upload-artifact@v2
+          with:
+            name: coverage-badge
+            path: ./coverage-badge.svg
       - name: Build Package
         run: python -m build
