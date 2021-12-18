@@ -40,7 +40,8 @@ class NameResultTest(unittest.TestCase):
 
 
 class HashResultTest(unittest.TestCase):
-    compare_row = ["file1", "file2", "aabbccddeeffaabbccddeeffaabbccddeeff", 100]
+    compare_row = ["file1", "file2",
+                   "aabbccddeeffaabbccddeeffaabbccddeeff", 100]
 
     def test_terminaltable_row(self):
         """Check if the row data get's parsed as expected"""

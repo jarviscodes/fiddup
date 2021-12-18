@@ -32,11 +32,13 @@ class FiddupHashResult(FiddupResultBase):
     base_size: int
     compared_size: int
 
-    def __init__(self, base_size, compared_size, file_hash, base_file, compared_file):
+    def __init__(self, base_size, compared_size,
+                 file_hash, base_file, compared_file):
         super().__init__(base_file, compared_file)
         self.file_hash = file_hash
         self.base_size = base_size
         self.file_compared_size = compared_size
 
     def as_terminaltable_row(self):
-        return [self.base_file, self.compared_file, self.file_hash, self.base_size]
+        return [self.base_file, self.compared_file,
+                self.file_hash, self.base_size]

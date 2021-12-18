@@ -6,7 +6,6 @@ from fiddup.views import (
     prepare_hash_table_header,
     prepare_name_table_header,
     refine_inputs,
-    get_hash_table_data,
     get_name_table_data,
 )
 
