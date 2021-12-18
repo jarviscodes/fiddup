@@ -40,7 +40,7 @@ class NameResultTest(unittest.TestCase):
 
 
 class HashResultTest(unittest.TestCase):
-    compare_row = ["file1", "file2", "aabbccddeeffaabbccddeeffaabbccddeeff"]
+    compare_row = ["file1", "file2", "aabbccddeeffaabbccddeeffaabbccddeeff", 100]
 
     def test_terminaltable_row(self):
         """Check if the row data get's parsed as expected"""
@@ -48,6 +48,8 @@ class HashResultTest(unittest.TestCase):
             base_file="file1",
             compared_file="file2",
             file_hash="aabbccddeeffaabbccddeeffaabbccddeeff",
+            base_size=100,
+            compared_size=100,
         )
         row = x.as_terminaltable_row()
         self.assertListEqual(row, self.compare_row)

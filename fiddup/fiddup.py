@@ -7,10 +7,12 @@ from alive_progress import alive_bar
 from fiddup.views import (
     prepare_name_table_header,
     prepare_hash_table_header,
-    get_table_data,
+    get_name_table_data,
+    get_hash_table_data,
 )
 from fiddup.result import FiddupNameResult, FiddupHashResult
 from hashlib import sha1
+import os
 
 
 def get_sha_hash(filepath, chunk_count):
@@ -47,6 +49,10 @@ def run_hashmode(verbose, extensions, inpath, chunk_count=5):
         for file in _file_list:
             for cmpfile in _file_list:
                 if file != cmpfile:
+                    # Get file size for both files
+                    file_size = os.stat(file).st_size
+                    cmpfile_size = os.stat(cmpfile).st_size
+
                     # Get file hash for "file":
                     file_hash = get_sha_hash(file, chunk_count)
                     cmpfile_hash = get_sha_hash(cmpfile, chunk_count)
@@ -55,13 +61,15 @@ def run_hashmode(verbose, extensions, inpath, chunk_count=5):
                             base_file=file,
                             compared_file=cmpfile,
                             file_hash=file_hash,
+                            base_size=file_size,
+                            compared_size=cmpfile_size
                         )
                         if _fu not in _result_list:
                             table_data.append(_fu.as_terminaltable_row())
                             _result_list.append(_fu)
             bar()
 
-    print(get_table_data(table_data).table)
+    print(get_hash_table_data(table_data).table)
 
 
 def run_assistant(verbose, extensions, directory, inpath, threshold):
@@ -114,4 +122,4 @@ def run_assistant(verbose, extensions, directory, inpath, threshold):
                             _result_list.append(_fu)
             bar()
 
-    print(get_table_data(table_data).table)
+    print(get_name_table_data(table_data).table)

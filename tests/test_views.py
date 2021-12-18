@@ -6,7 +6,8 @@ from fiddup.views import (
     prepare_hash_table_header,
     prepare_name_table_header,
     refine_inputs,
-    get_table_data,
+    get_hash_table_data,
+    get_name_table_data,
 )
 
 
@@ -32,7 +33,7 @@ class TestTableHeaders(unittest.TestCase):
         table_header_columns = len(table_header[0])
         self.assertEqual(table_header_length, 1, "Need exactly 1 header row.")
         self.assertEqual(
-            table_header_columns, 3, "Need exactly 3 header columns."
+            table_header_columns, 4, "Need exactly 4 header columns."
         )
 
 
@@ -42,7 +43,7 @@ class TestTableData(unittest.TestCase):
     justify_dict = {0: "left", 1: "left", 2: "right"}
 
     def test_get_table_data(self):
-        table = get_table_data(table_data=self.table_data)
+        table = get_name_table_data(table_data=self.table_data)
         self.assertTrue("Results" in table.title)
         self.assertFalse(table.inner_heading_row_border)
         self.assertDictEqual(table.justify_columns, self.justify_dict)

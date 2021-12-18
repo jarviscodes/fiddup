@@ -49,6 +49,7 @@ from fiddup.fiddup import run_assistant, run_hashmode
 @click.option(
     "--chunk_count",
     type=int,
+    default=5,
     help="Number of chunks to read from files while hashing. "
          "Higher = more accuracy = Slower.",
 )
