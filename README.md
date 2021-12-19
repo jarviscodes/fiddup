@@ -1,6 +1,6 @@
 # Fiddup
 
-![Version 2.3.0](https://img.shields.io/badge/Version-2.3.0-blue)
+![Version 2.3.1](https://img.shields.io/badge/Version-2.3.1-blue)
 ![MIT License](https://img.shields.io/badge/License-MIT-success)
 ![Flake8](https://github.com/jarviscodes/fiddup/actions/workflows/flake8_linter.yml/badge.svg)
 ![Tests](https://github.com/jarviscodes/fiddup/actions/workflows/testing_and_coverage.yml/badge.svg)
