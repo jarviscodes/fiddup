@@ -4,6 +4,7 @@
 ![MIT License](https://img.shields.io/badge/License-MIT-success)
 ![Flake8](https://github.com/jarviscodes/fiddup/actions/workflows/flake8_linter.yml/badge.svg)
 ![Tests](https://github.com/jarviscodes/fiddup/actions/workflows/testing_and_coverage.yml/badge.svg)
+![Stable Build](https://github.com/jarviscodes/fiddup/actions/workflows/stable_build.yml/badge.svg)
 
 **Fi**le **D**e**Dup**licator
 
