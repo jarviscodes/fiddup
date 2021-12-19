@@ -3,7 +3,10 @@
 
 name: PyTest/Coverage
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 
 jobs:
   test_and_coverage:
