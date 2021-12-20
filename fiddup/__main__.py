@@ -39,10 +39,13 @@ def main():
          "Only available in assistant mode.",
 )
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
-def assistant(verbose, extensions, directory: bool = True, in_path: str = None, threshold: float = 0.7):
+def assistant(verbose, extensions, directory: bool = True,
+              in_path: str = None, threshold: float = 0.7):
     verbose, extensions, directory, in_path, threshold, _ \
         = refine_inputs(verbose=verbose, extensions=extensions,
-                        directory=directory, in_path=in_path, threshold=threshold)
+                        directory=directory,
+                        in_path=in_path, threshold=threshold)
+
     run_assistant(verbose, extensions, directory, in_path, threshold)
 
 
@@ -72,7 +75,8 @@ def assistant(verbose, extensions, directory: bool = True, in_path: str = None, 
 )
 def hashmode(verbose, extensions, in_path: str = None, chunk_count: int = 5):
     verbose, extensions, _, in_path, _, chunk_count \
-        = refine_inputs(verbose=verbose, extensions=extensions, in_path=in_path, chunk_count=chunk_count)
+        = refine_inputs(verbose=verbose, extensions=extensions,
+                        in_path=in_path, chunk_count=chunk_count)
     run_hashmode(verbose, extensions, in_path, chunk_count)
 
 
