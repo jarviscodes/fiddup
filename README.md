@@ -31,22 +31,42 @@ In case of false positives, first try to increase the `--chunk_count` flag. (def
 
 ## Usage
 ```
-Usage: python -m fiddup [OPTIONS]
-
-  Fiddup is a Non-destructive file deduplicator that can assist you to find
-  similar or duplicate files.
+(env) E:\Users\Jarvis\PycharmProjects\fiddup>python -m fiddup --help
+Usage: python -m fiddup [OPTIONS] COMMAND [ARGS]...
 
 Options:
-  -i, --inpath TEXT      Path to scan for duplicates.  [required]
-  -a, --assistant        Toggles Assistant mode (name similarity search).
+  --help  Show this message and exit.
+
+Commands:
+  assistant
+  hashmode
+```
+
+```
+Fiddup v2.3.1
+Usage: python -m fiddup assistant [OPTIONS]
+
+Options:
+  -i, --in_path TEXT     Path to scan for duplicates.  [required]
   -t, --threshold FLOAT  Similarity threshold. Assistant will only show
                          similarities > this.
-  -e, --extensions TEXT  List of extensions to scan for, specify multiple with
+  -e, --extensions TEXT  List of extensions to scan for. Specify multiple with
                          e.g.: -e zip -e txt -e pdf.  [required]
   -d, --directory        Include directories in comparison. Only available in
                          assistant mode.
   -v, --verbose          Show verbose output.
-  -h, --hashmode         Toggles hash mode (file hash comparison).
+  --help                 Show this message and exit.
+```
+
+```
+Fiddup v2.3.1
+Usage: python -m fiddup hashmode [OPTIONS]
+
+Options:
+  -i, --in_path TEXT     Path to scan for duplicates.  [required]
+  -e, --extensions TEXT  List of extensions to scan for. Specify multiple with
+                         e.g.: -e zip -e txt -e pdf.  [required]
+  -v, --verbose          Show verbose output.
   --chunk_count INTEGER  Number of chunks to read from files while hashing.
                          Higher = more accuracy = Slower.
   --help                 Show this message and exit.
@@ -64,3 +84,7 @@ Get the hashes from the files and compare the files content-wise by doing so.
 ## Testing
 
 `python -m unittest discover -s tests`
+
+or
+
+`python -m pytest`
