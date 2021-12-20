@@ -3,19 +3,18 @@ from fiddup.views import refine_inputs
 from fiddup.fiddup import run_assistant, run_hashmode
 
 
-@click.command()
+@click.group()
+def main():
+    click.secho("Fiddup v2.3.1")
+
+
+@main.command()
 @click.option(
-    "--inpath",
+    "--in_path",
     "-i",
     type=str,
     required=True,
     help="Path to scan for duplicates.",
-)
-@click.option(
-    "--assistant",
-    "-a",
-    is_flag=True,
-    help="Toggles Assistant mode (name similarity search).",
 )
 @click.option(
     "--threshold",
@@ -40,12 +39,30 @@ from fiddup.fiddup import run_assistant, run_hashmode
          "Only available in assistant mode.",
 )
 @click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
+def assistant(verbose, extensions, directory: bool = True, in_path: str = None, threshold: float = 0.7):
+    verbose, extensions, directory, in_path, threshold, _ \
+        = refine_inputs(verbose=verbose, extensions=extensions,
+                        directory=directory, in_path=in_path, threshold=threshold)
+    run_assistant(verbose, extensions, directory, in_path, threshold)
+
+
+@main.command()
 @click.option(
-    "--hashmode",
-    "-h",
-    is_flag=True,
-    help="Toggles hash mode (file hash comparison).",
+    "--in_path",
+    "-i",
+    type=str,
+    required=True,
+    help="Path to scan for duplicates.",
 )
+@click.option(
+    "--extensions",
+    "-e",
+    multiple=True,
+    required=True,
+    help="List of extensions to scan for. "
+         "Specify multiple with e.g.: -e zip -e txt -e pdf.",
+)
+@click.option("--verbose", "-v", is_flag=True, help="Show verbose output.")
 @click.option(
     "--chunk_count",
     type=int,
@@ -53,43 +70,10 @@ from fiddup.fiddup import run_assistant, run_hashmode
     help="Number of chunks to read from files while hashing. "
          "Higher = more accuracy = Slower.",
 )
-def main(
-    verbose,
-    extensions,
-    directory: bool = True,
-    inpath: str = None,
-    assistant: bool = True,
-    hashmode: bool = False,
-    threshold: float = 0.7,
-    chunk_count: int = 5,
-):
-    """Fiddup is a Non-destructive file deduplicator that can assist you
-    to find similar or duplicate files."""
-    (
-        verbose,
-        extensions,
-        directory,
-        inpath,
-        assistant,
-        hashmode,
-        threshold,
-        chunk_count,
-    ) = refine_inputs(
-        verbose,
-        extensions,
-        directory,
-        inpath,
-        assistant,
-        hashmode,
-        threshold,
-        chunk_count,
-    )
-
-    if hashmode:
-        run_hashmode(verbose, extensions, inpath, chunk_count)
-
-    if assistant:
-        run_assistant(verbose, extensions, directory, inpath, threshold)
+def hashmode(verbose, extensions, in_path: str = None, chunk_count: int = 5):
+    verbose, extensions, _, in_path, _, chunk_count \
+        = refine_inputs(verbose=verbose, extensions=extensions, in_path=in_path, chunk_count=chunk_count)
+    run_hashmode(verbose, extensions, in_path, chunk_count)
 
 
 if __name__ == "__main__":

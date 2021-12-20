@@ -1,6 +1,6 @@
 from colorama import Style, Fore
 from terminaltables import SingleTable
-from fiddup.constants import INFO_PREFIX, ERR_PREFIX
+from fiddup.constants import ERR_PREFIX
 import click
 
 
@@ -48,23 +48,15 @@ def get_hash_table_data(table_data):
 
 
 def refine_inputs(
-    verbose,
-    extensions,
-    directory,
-    inpath,
-    assistant,
-    hashmode,
-    threshold,
-    chunk_count,
+    verbose=False,
+    extensions=None,
+    directory=False,
+    in_path=None,
+    threshold=0,
+    chunk_count=5,
 ):
-
-    if assistant and hashmode:
-        click.secho(f"{ERR_PREFIX} Cannot have both assistant and hashmode.")
-        exit()
-
-    if not assistant and not hashmode:
-        click.secho(f"{ERR_PREFIX} Need at least -a or -h, see --help")
-        exit()
+    if extensions is None:
+        extensions = []
 
     extensions = [ext.replace(".", "") for ext in extensions]
 
@@ -74,32 +66,11 @@ def refine_inputs(
         )
         exit()
 
-    if hashmode and directory:
-        click.secho(
-            f"{ERR_PREFIX} Cant use hash mode for directories. "
-            f"Remove -d or use assistant mode."
-        )
-        exit()
-
-    if verbose:
-        click.secho(f"{INFO_PREFIX} Starting with assistant: {assistant}")
-        click.secho(
-            f"{INFO_PREFIX} Starting with match threshold: {threshold}"
-        )
-        click.secho(
-            f"{INFO_PREFIX} Scanning for extensions: {', '.join(extensions)}"
-        )
-        click.secho(f"{INFO_PREFIX} Starting with directory: {directory}")
-        click.secho(f"{INFO_PREFIX} Starting with inpath: {inpath}")
-        click.secho(f"{INFO_PREFIX} Starting with hashmode: {hashmode}")
-
     return (
         verbose,
         extensions,
         directory,
-        inpath,
-        assistant,
-        hashmode,
+        in_path,
         threshold,
         chunk_count,
     )
