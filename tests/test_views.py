@@ -59,57 +59,19 @@ class TestInputs(unittest.TestCase):
     extensions_dirty = [".mp4", ".mp3", "wma", "..txt"]
     extensions_clean = ["mp4", "mp3", "wma", "txt"]
 
-    def test_refine_multimode(self):
-        with patch("sys.stdout", new=StringIO()) as fakeOutput:
-            with self.assertRaises(SystemExit):
-                refine_inputs(
-                    assistant=True,
-                    hashmode=True,
-                    verbose=False,
-                    extensions=False,
-                    directory=False,
-                    inpath="",
-                    threshold=0.5,
-                    chunk_count=5,
-                )
-            self.assertTrue(
-                "Cannot have both" in fakeOutput.getvalue().strip()
-            )
-
-    def test_refine_nomode(self):
-        with patch("sys.stdout", new=StringIO()) as fakeOutput:
-            with self.assertRaises(SystemExit):
-                refine_inputs(
-                    assistant=False,
-                    hashmode=False,
-                    verbose=False,
-                    extensions=False,
-                    directory=False,
-                    inpath="",
-                    threshold=0.5,
-                    chunk_count=5,
-                )
-            self.assertTrue(
-                "Need at least -a or -h" in fakeOutput.getvalue().strip()
-            )
-
     def test_refine_extensions(self):
         (
             verbose,
             extensions,
             directory,
-            inpath,
-            assistant,
-            hashmode,
+            in_path,
             threshold,
             chunk_count,
         ) = refine_inputs(
-            assistant=True,
-            hashmode=False,
             verbose=False,
             extensions=self.extensions_dirty,
             directory=False,
-            inpath="",
+            in_path="",
             threshold=0.5,
             chunk_count=5,
         )
@@ -119,67 +81,15 @@ class TestInputs(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as fakeOutput:
             with self.assertRaises(SystemExit):
                 refine_inputs(
-                    assistant=True,
-                    hashmode=False,
                     verbose=False,
                     extensions=self.extensions_dirty,
                     directory=False,
-                    inpath="",
                     threshold=1.8,
                     chunk_count=5,
                 )
             self.assertTrue(
                 "Please specify a value" in fakeOutput.getvalue().strip()
             )
-
-    def test_hashmode_directories(self):
-        with patch("sys.stdout", new=StringIO()) as fakeOutput:
-            with self.assertRaises(SystemExit):
-                refine_inputs(
-                    assistant=False,
-                    hashmode=True,
-                    verbose=False,
-                    extensions=self.extensions_clean,
-                    directory=True,
-                    inpath="",
-                    threshold=0.5,
-                    chunk_count=5,
-                )
-            self.assertTrue(
-                "Cant use hash mode for directories"
-                in fakeOutput.getvalue().strip()
-            )
-
-    def test_verbose_mode(self):
-        with patch("sys.stdout", new=StringIO()) as fakeOutput:
-            refine_inputs(
-                assistant=False,
-                hashmode=True,
-                verbose=True,
-                extensions=self.extensions_dirty,
-                directory=False,
-                inpath="",
-                threshold=0.5,
-                chunk_count=5,
-            )
-        self.assertTrue(
-            "Starting with assistant" in fakeOutput.getvalue().strip()
-        )
-        self.assertTrue(
-            "Starting with match threshold" in fakeOutput.getvalue().strip()
-        )
-        self.assertTrue(
-            "Scanning for extensions" in fakeOutput.getvalue().strip()
-        )
-        self.assertTrue(
-            "Starting with directory" in fakeOutput.getvalue().strip()
-        )
-        self.assertTrue(
-            "Starting with inpath" in fakeOutput.getvalue().strip()
-        )
-        self.assertTrue(
-            "Starting with hashmode" in fakeOutput.getvalue().strip()
-        )
 
 
 if __name__ == "__main__":
