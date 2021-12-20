@@ -1,6 +1,6 @@
 # Fiddup
 
-![Version 2.3.1](https://img.shields.io/badge/Version-2.3.1-blue)
+![Version 3.0.0](https://img.shields.io/badge/Version-3.0.0-blue)
 ![MIT License](https://img.shields.io/badge/License-MIT-success)
 ![Flake8](https://github.com/jarviscodes/fiddup/actions/workflows/flake8_linter.yml/badge.svg)
 ![Tests](https://github.com/jarviscodes/fiddup/actions/workflows/testing_and_coverage.yml/badge.svg)
@@ -43,7 +43,7 @@ Commands:
 ```
 
 ```
-Fiddup v2.3.1
+Fiddup v3.0.0
 Usage: python -m fiddup assistant [OPTIONS]
 
 Options:
@@ -59,7 +59,7 @@ Options:
 ```
 
 ```
-Fiddup v2.3.1
+Fiddup v3.0.0
 Usage: python -m fiddup hashmode [OPTIONS]
 
 Options:

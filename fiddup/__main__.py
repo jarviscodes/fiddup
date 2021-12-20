@@ -5,7 +5,7 @@ from fiddup.fiddup import run_assistant, run_hashmode
 
 @click.group()
 def main():
-    click.secho("Fiddup v2.3.1")
+    click.secho("Fiddup v3.0.0")
 
 
 @main.command()
